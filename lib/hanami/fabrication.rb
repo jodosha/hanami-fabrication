@@ -1,6 +1,7 @@
 require "fabrication"
 require "hanami/fabrication/version"
 require "hanami/utils/class"
+require "hanami"
 
 module Fabrication
   module Generator
@@ -29,5 +30,7 @@ module Fabrication
 end
 
 Fabrication.configure do |config|
+  config.path_prefix = Hanami.root
+  config.fabricator_path = 'spec/support/fabricators'
   config.generators << Fabrication::Generator::Hanami
 end
