@@ -10,7 +10,7 @@ module Fabrication
       end
 
       def build_instance
-        self._instance = _klass.new(_attributes)
+        self._instance = resolved_class.new(_attributes)
       end
 
       protected
@@ -22,7 +22,7 @@ module Fabrication
       private
 
       def repository
-        ::Hanami::Utils::Class.load!("#{_klass}Repository").new
+        ::Hanami::Utils::Class.load!("#{resolved_class}Repository").new
       end
     end
   end
